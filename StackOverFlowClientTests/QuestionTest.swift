@@ -11,7 +11,7 @@ import XCTest
 
 class QuestionTest: XCTestCase {
     
-    let testQuestion = Question()
+    let testQuestion = Question(questionID: 0, questionAnswerCount: 0, questionScore: 0)
 
     override func setUp() {
         super.setUp()
@@ -36,13 +36,35 @@ class QuestionTest: XCTestCase {
     }
     
     func testQuestionViewCount() {
+        let data = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("Example", ofType: "json"))
+        
+        let jsonData = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
+        
+        if let questionsArray = jsonData["items"] as? NSArray {
+            var questions: [Question] = Question.questionsFromJSON(questionsArray)
+            println(questions)
+            XCTAssertNotNil(questions, "Question Answer Count could not be found")
+            
+        }
+
+        
         testQuestion.questionViewCount = 10
         XCTAssertNotNil(testQuestion.questionViewCount, "Question View Count could not be found")
     }
     
     func testQuestionAnswerCount() {
-        testQuestion.questionAnswerCount = 10
-        XCTAssertNotNil(testQuestion.questionAnswerCount, "Question Answer Count could not be found")
+        
+        let data = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("Example", ofType: "json"))
+        
+        let jsonData = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
+        
+        if let questionsArray = jsonData["items"] as? NSArray {
+           var questions: [Question] = Question.questionsFromJSON(questionsArray)
+            println(questions)
+            XCTAssertNotNil(questions, "Question Answer Count could not be found")
+
+        }
+        
     }
     
     func testQuestionScore() {

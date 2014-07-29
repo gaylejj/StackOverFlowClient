@@ -11,11 +11,9 @@ import UIKit
 class User: NSObject {
     
     var owner : Dictionary<String, AnyObject>?
-    var badgeCounts : Dictionary<String, Int>?
-    var isEmployee : Bool?
-    var userCreationDate : NSDate?
-    var location : String?
     var userLink : NSURL?
     var displayName : String?
+    var userID : String?
+    var profileImage : UIImage?
    
 }
