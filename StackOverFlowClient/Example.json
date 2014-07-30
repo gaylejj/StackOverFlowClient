@@ -2,139 +2,263 @@
     "items": [
               {
               "tags": [
-                       "cassandra",
-                       "debian",
-                       "apt-get"
+                       "swift",
+                       "type-conversion"
                        ],
               "owner": {
-              "reputation": 318,
-              "user_id": 2999490,
+              "reputation": 26,
+              "user_id": 1597274,
               "user_type": "registered",
-              "accept_rate": 80,
-              "profile_image": "https://www.gravatar.com/avatar/b7f26ca67a6c76bc65e02045892c6a0f?s=128&d=identicon&r=PG&f=1",
-              "display_name": "Alex",
-              "link": "http://stackoverflow.com/users/2999490/alex"
+              "profile_image": "https://www.gravatar.com/avatar/e5513e567a63a0338b5be984ad7e0ce4?s=128&d=identicon&r=PG",
+              "display_name": "macu",
+              "link": "http://stackoverflow.com/users/1597274/macu"
               },
               "is_answered": false,
-              "view_count": 14,
+              "view_count": 8,
               "answer_count": 1,
               "score": 0,
-              "last_activity_date": 1406587486,
-              "creation_date": 1406501061,
-              "last_edit_date": 1406587486,
-              "question_id": 24986391,
-              "link": "http://stackoverflow.com/questions/24986391/error-to-install-cassandra",
-              "title": "Error to install cassandra"
+              "last_activity_date": 1406740695,
+              "creation_date": 1406739589,
+              "question_id": 25042695,
+              "link": "http://stackoverflow.com/questions/25042695/swift-converting-from-unsafepointeruint8-with-length-to-string",
+              "title": "Swift - converting from UnsafePointer&lt;UInt8&gt; with length to String"
               },
               {
               "tags": [
                        "ios",
-                       "uiimageview",
-                       "uiimage",
-                       "mkmapview",
-                       "mkannotationview"
+                       "uiviewcontroller",
+                       "swift",
+                       "segue",
+                       "uistoryboardsegue"
                        ],
               "owner": {
-              "reputation": 114,
-              "user_id": 2020045,
+              "reputation": 27,
+              "user_id": 2720967,
               "user_type": "registered",
-              "accept_rate": 79,
-              "profile_image": "http://i.stack.imgur.com/pPsL2.png?s=128&g=1",
-              "display_name": "Igor Tupitsyn",
-              "link": "http://stackoverflow.com/users/2020045/igor-tupitsyn"
+              "accept_rate": 75,
+              "profile_image": "https://www.gravatar.com/avatar/309c4d85fcd3e372ac41d89c560ca934?s=128&d=identicon&r=PG&f=1",
+              "display_name": "samiljin",
+              "link": "http://stackoverflow.com/users/2720967/samiljin"
               },
               "is_answered": true,
-              "view_count": 25,
-              "accepted_answer_id": 24981383,
-              "answer_count": 2,
-              "score": 1,
-              "last_activity_date": 1406587251,
-              "creation_date": 1406421370,
-              "last_edit_date": 1406467323,
-              "question_id": 24976811,
-              "link": "http://stackoverflow.com/questions/24976811/rotate-annotation-image-on-mkmapview",
-              "title": "Rotate annotation image on MKMapView"
+              "view_count": 17,
+              "accepted_answer_id": 25042700,
+              "answer_count": 1,
+              "score": 2,
+              "last_activity_date": 1406739859,
+              "creation_date": 1406738956,
+              "last_edit_date": 1406739859,
+              "question_id": 25042491,
+              "link": "http://stackoverflow.com/questions/25042491/prepareforsegue-called-but-not-loading-the-next-uiviewcontroller",
+              "title": "prepareForSegue called but not loading the next UIViewController"
               },
               {
               "tags": [
-                       "php",
                        "osx",
-                       "joomla"
+                       "cocoa",
+                       "swift"
                        ],
               "owner": {
-              "reputation": 13,
-              "user_id": 3682388,
+              "reputation": 501,
+              "user_id": 155417,
               "user_type": "registered",
-              "accept_rate": 67,
-              "profile_image": "https://www.gravatar.com/avatar/7c5e97cdda057426d95e38bd689e7ec8?s=128&d=identicon&r=PG&f=1",
-              "display_name": "Origins",
-              "link": "http://stackoverflow.com/users/3682388/origins"
+              "profile_image": "https://www.gravatar.com/avatar/0333c8c993f63d263c9bc59ad2c35a9b?s=128&d=identicon&r=PG",
+              "display_name": "Chalkers",
+              "link": "http://stackoverflow.com/users/155417/chalkers"
+              },
+              "is_answered": true,
+              "view_count": 1909,
+              "accepted_answer_id": 24021467,
+              "answer_count": 4,
+              "score": 15,
+              "last_activity_date": 1406739190,
+              "creation_date": 1401750952,
+              "last_edit_date": 1404232795,
+              "question_id": 24004776,
+              "link": "http://stackoverflow.com/questions/24004776/input-from-the-keyboard-in-command-line-application",
+              "title": "Input from the keyboard in command line application"
+              },
+              {
+              "tags": [
+                       "ios",
+                       "swift",
+                       "sprite-kit",
+                       "xcode6"
+                       ],
+              "owner": {
+              "reputation": 6,
+              "user_id": 3892346,
+              "user_type": "registered",
+              "profile_image": "https://www.gravatar.com/avatar/b834aed94e56d784c7d30d7dce2ebe04?s=128&d=identicon&r=PG&f=1",
+              "display_name": "Potter",
+              "link": "http://stackoverflow.com/users/3892346/potter"
               },
               "is_answered": false,
-              "view_count": 10,
+              "view_count": 21,
+              "answer_count": 0,
+              "score": 1,
+              "last_activity_date": 1406739186,
+              "creation_date": 1406739186,
+              "question_id": 25042580,
+              "link": "http://stackoverflow.com/questions/25042580/screens-real-size-is-bigger-than-what-i-see",
+              "title": "Screen&#39;s real size is bigger than what I see"
+              },
+              {
+              "tags": [
+                       "osx",
+                       "swift",
+                       "swift-playground"
+                       ],
+              "owner": {
+              "reputation": 196,
+              "user_id": 1334703,
+              "user_type": "registered",
+              "accept_rate": 61,
+              "profile_image": "https://www.gravatar.com/avatar/eba1a2fe0dcc435db3c375a342b49ceb?s=128&d=identicon&r=PG&f=1",
+              "display_name": "孤魂楚",
+              "link": "http://stackoverflow.com/users/1334703/%e5%ad%a4%e9%ad%82%e6%a5%9a"
+              },
+              "is_answered": false,
+              "view_count": 7,
               "answer_count": 0,
               "score": 0,
-              "last_activity_date": 1406587238,
-              "creation_date": 1406489891,
-              "last_edit_date": 1406587238,
-              "question_id": 24984862,
-              "link": "http://stackoverflow.com/questions/24984862/xampp-with-joomla-not-configured-correctly",
-              "title": "Xampp with Joomla not configured correctly"
+              "last_activity_date": 1406739158,
+              "creation_date": 1406739158,
+              "question_id": 25042568,
+              "link": "http://stackoverflow.com/questions/25042568/swifthow-radio-menu",
+              "title": "swift:How radio menu?"
               },
               {
               "tags": [
-                       "perl",
-                       "perlbrew"
+                       "ios",
+                       "xcode",
+                       "uiwebview",
+                       "swift"
                        ],
               "owner": {
-              "reputation": 343,
-              "user_id": 862763,
+              "reputation": 34,
+              "user_id": 3876172,
               "user_type": "registered",
-              "accept_rate": 53,
-              "profile_image": "https://www.gravatar.com/avatar/e7de5dad6c72ebdadbf4f6b69268c4d0?s=128&d=identicon&r=PG",
-              "display_name": "alpha_cod",
-              "link": "http://stackoverflow.com/users/862763/alpha-cod"
-              },
-              "is_answered": true,
-              "view_count": 48,
-              "accepted_answer_id": 24977335,
-              "answer_count": 2,
-              "score": 2,
-              "last_activity_date": 1406586942,
-              "creation_date": 1406425180,
-              "last_edit_date": 1406586942,
-              "question_id": 24977146,
-              "link": "http://stackoverflow.com/questions/24977146/perlbrew-install-perl-takes-forever-just-install-already-compiled-perl",
-              "title": "Perlbrew install perl takes forever, just install already-compiled perl"
-              },
-              {
-              "tags": [
-                       "c#",
-                       ".net",
-                       "elasticsearch",
-                       "nest"
-                       ],
-              "owner": {
-              "reputation": 1,
-              "user_id": 3882100,
-              "user_type": "registered",
-              "profile_image": "https://www.gravatar.com/avatar/25a3e2ec3fb34a801d98c360052f102f?s=128&d=identicon&r=PG&f=1",
-              "display_name": "LostInTheEcho",
-              "link": "http://stackoverflow.com/users/3882100/lostintheecho"
+              "profile_image": "http://i.stack.imgur.com/LtAN4.jpg?s=128&g=1",
+              "display_name": "Tosen",
+              "link": "http://stackoverflow.com/users/3876172/tosen"
               },
               "is_answered": false,
-              "view_count": 51,
+              "view_count": 26,
               "answer_count": 1,
               "score": 0,
-              "last_activity_date": 1406585959,
-              "creation_date": 1406484988,
-              "last_edit_date": 1406585959,
-              "question_id": 24984071,
-              "link": "http://stackoverflow.com/questions/24984071/searching-using-nest-does-not-return-results-when-querying-on-certain-fields",
-              "title": "Searching using NEST does not return results, when querying on certain fields"
+              "last_activity_date": 1406738005,
+              "creation_date": 1406716129,
+              "last_edit_date": 1406738005,
+              "question_id": 25034515,
+              "link": "http://stackoverflow.com/questions/25034515/load-a-view-and-its-webview-object-in-the-background-and-then-performing-the",
+              "title": "Load a View (and it&#39;s WebView object) in the Background and then performing the Segue"
+              },
+              {
+              "tags": [
+                       "objective-c",
+                       "xcode",
+                       "cocoa",
+                       "swift"
+                       ],
+              "owner": {
+              "reputation": 4695,
+              "user_id": 59541,
+              "user_type": "registered",
+              "accept_rate": 80,
+              "profile_image": "https://www.gravatar.com/avatar/5f463dd4e7af28b64ad8f0e032ee82dc?s=128&d=identicon&r=PG",
+              "display_name": "Nate Cook",
+              "link": "http://stackoverflow.com/users/59541/nate-cook"
+              },
+              "is_answered": true,
+              "view_count": 182,
+              "bounty_amount": 50,
+              "bounty_closes_date": 1406818602,
+              "answer_count": 2,
+              "score": 6,
+              "last_activity_date": 1406737971,
+              "creation_date": 1406032149,
+              "last_edit_date": 1406301007,
+              "question_id": 24887454,
+              "link": "http://stackoverflow.com/questions/24887454/how-can-i-retrieve-swift-header-files-for-cocoa-apis",
+              "title": "How can I retrieve Swift &quot;header&quot; files for Cocoa APIs?"
+              },
+              {
+              "tags": [
+                       "ios",
+                       "swift",
+                       "xcode6"
+                       ],
+              "owner": {
+              "reputation": 340,
+              "user_id": 1556715,
+              "user_type": "registered",
+              "profile_image": "https://www.gravatar.com/avatar/63aa576412fa8b694f0f92b9f47f5097?s=128&d=identicon&r=PG&f=1",
+              "display_name": "Rohit",
+              "link": "http://stackoverflow.com/users/1556715/rohit"
+              },
+              "is_answered": true,
+              "view_count": 14,
+              "answer_count": 1,
+              "score": 1,
+              "last_activity_date": 1406737897,
+              "creation_date": 1406720517,
+              "last_edit_date": 1406737897,
+              "question_id": 25035943,
+              "link": "http://stackoverflow.com/questions/25035943/xcode-6-storyboard-size-not-changing-when-selecting-wregular-hregular-from-w",
+              "title": "Xcode 6: storyboard size not changing when selecting w:Regular h:Regular from w:compact h:regular"
+              },
+              {
+              "tags": [
+                       "ios",
+                       "swift",
+                       "sprite-kit"
+                       ],
+              "owner": {
+              "reputation": 43,
+              "user_id": 3722523,
+              "user_type": "registered",
+              "profile_image": "https://www.gravatar.com/avatar/8f654127206d78b1e5b448f7206f03ea?s=128&d=identicon&r=PG&f=1",
+              "display_name": "user3722523",
+              "link": "http://stackoverflow.com/users/3722523/user3722523"
+              },
+              "is_answered": false,
+              "view_count": 81,
+              "answer_count": 0,
+              "score": 2,
+              "last_activity_date": 1406737589,
+              "creation_date": 1406479731,
+              "last_edit_date": 1406737589,
+              "question_id": 24983177,
+              "link": "http://stackoverflow.com/questions/24983177/found-nil-while-unwrapping-an-optional-value-spritekit",
+              "title": "found nil while unwrapping an Optional value - spriteKit"
+              },
+              {
+              "tags": [
+                       "swift",
+                       "swift-playground",
+                       "xcode6-beta4"
+                       ],
+              "owner": {
+              "reputation": 17,
+              "user_id": 3714585,
+              "user_type": "registered",
+              "profile_image": "http://graph.facebook.com/1133605687/picture?type=large",
+              "display_name": "user3714585",
+              "link": "http://stackoverflow.com/users/3714585/user3714585"
+              },
+              "is_answered": false,
+              "view_count": 12,
+              "answer_count": 0,
+              "score": -1,
+              "last_activity_date": 1406736616,
+              "creation_date": 1406736616,
+              "question_id": 25041754,
+              "link": "http://stackoverflow.com/questions/25041754/about-xcode-optional-argument",
+              "title": "About Xcode Optional Argument"
               }
               ],
     "has_more": true,
     "quota_max": 10000,
-    "quota_remaining": 9817
+    "quota_remaining": 9689
 }

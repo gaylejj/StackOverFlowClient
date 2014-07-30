@@ -8,24 +8,108 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
-    let networkController = NetworkController()
-    var questions = [Question]()
-                            
-    @IBAction func searchDownload(sender: UIButton) {
+    var questions : [Question]?
+    var tags: [Tags]?
+    
+    @IBOutlet weak var tableView : UITableView!
         
-        self.networkController.downloadSearchResults()
-                
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 10
+        
+        let tagsButton = UIBarButtonItem(title: "Tags", style: UIBarButtonItemStyle.Plain, target: self, action: "listOfTags")
+        
+        self.navigationItem.rightBarButtonItem = tagsButton
+        
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        let networkController = NetworkController()
+//        networkController.fetchQuestionsFromSampleData(
+//            {(questions: [Question]?, errorDescription: String?) -> Void in
+//                if errorDescription {
+//                    //Error code
+//                } else {
+//                    self.questions = questions
+//                    self.tableView.reloadData()
+//                }
+//            })
+    }
+    
+    func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+        let cell = tableView.dequeueReusableCellWithIdentifier("QuestionCell", forIndexPath: indexPath) as QuestionCell
+        
+        let question = self.questions![indexPath.row] as Question
+
+        cell.textView.text = question.questionTitle
+        cell.textView.scrollEnabled = false
+        return cell
+    }
+    
+    func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+        if self.questions {
+            return self.questions!.count
+        }
+        return 0
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+        return UITableViewAutomaticDimension;
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar!) {
+        let searchTerm = searchBar.text
+        searchBar.resignFirstResponder()
+        let networkController = NetworkController()
+        networkController.downloadSearchResults(searchTerm,
+            {(questions: [Question]?, errorDescription: String?) -> Void in
+                
+                self.questions = questions
+                errorDescription == nil
+                
+                NSOperationQueue.mainQueue().addOperationWithBlock (
+                    {() -> Void in
+                        self.tableView.reloadData()
+                    })
+            })
+        
+    }
+    
+    func listOfTags() {
+        
+        let tagsVC = self.storyboard.instantiateViewControllerWithIdentifier("Tags") as TagsViewController
+        
+        
+        let networkController = NetworkController()
+        
+        networkController.downloadListOfTags(
+            {(tags: [Tags]?, errorDescription: String?) -> Void in
+                
+                tagsVC.tags = tags
+                
+                NSOperationQueue.mainQueue().addOperationWithBlock(
+                    {() -> Void in
+                        
+//                        tagsVC.tableView.reloadData()
+                        self.navigationController.pushViewController(tagsVC, animated: true)
+                        
+                    })
+            })
+    }
+    
+    
 
 
 }

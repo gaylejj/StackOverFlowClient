@@ -15,67 +15,54 @@ class Question: NSObject {
     var questionScore : Int?
     var questionLastActivityDate : NSDate?
     var questionCreationDate : NSDate?
-    var questionLink : NSURL?
     var questionTitle : String?
     var questionID : Int?
-    var owner : User!
+    var tags : [String]?
     
-    var questions = [Question]()
-
-    class func questionsFromJSON(jsonData : NSArray) -> [Question]{
-        
-        var questions = [Question]()
+//    var questions = [Question]()
     
-        for jsonQuestion : AnyObject in jsonData {
-            var question = Question(questionID: 0, questionAnswerCount: 0, questionScore: 0)
-            question.questionViewCount = jsonQuestion.objectForKey("view_count") as? Int
-            question.questionAnswerCount = jsonQuestion.objectForKey("answer_count") as? Int
-            question.questionID = jsonQuestion.objectForKey("question_id") as? Int
-            question.questionTitle = jsonQuestion.objectForKey("title") as? String
-            question.questionScore = jsonQuestion.objectForKey("score") as? Int
-            question.questionLink = jsonQuestion.objectForKey("link") as? NSURL
-            question.questionLastActivityDate = jsonQuestion.objectForKey("last_activity_date") as? NSDate
-            question.questionCreationDate = jsonQuestion.objectForKey("creation_date") as? NSDate
-            
-            if let user = jsonQuestion["owner"] as? NSDictionary {
-                var user_id = user["user_id"] as String
-                var displayName = user["display_name"] as String
-                var link = user["link"] as NSURL
-                var profileImage = user["profile_image"] as UIImage
-                
-            }
-            
-            questions += question
+    init(itemDict: NSDictionary) {
+        self.questionTitle = itemDict.objectForKey("title") as? String
+        self.questionID = itemDict.objectForKey("quesiton_id") as? Int
+        self.questionViewCount = itemDict.objectForKey("view_count") as? Int
+        self.questionAnswerCount = itemDict.objectForKey("answer_count") as? Int
+        if let creationDateEpoch = itemDict.objectForKey("creation_date") as? Double {
+            self.questionCreationDate = NSDate(timeIntervalSince1970: creationDateEpoch)
         }
-        return questions
-    }
-    
-    init(questionID: Int, questionAnswerCount: Int, questionScore: Int) {
-        self.questionID = questionID
-        self.questionAnswerCount = questionAnswerCount
-        self.questionScore = questionScore
+        if let lastActivityDateEpoch = itemDict.objectForKey("last_activity_date") as? Double {
+            self.questionLastActivityDate = NSDate(timeIntervalSince1970: lastActivityDateEpoch)
+        }
+        self.tags = itemDict.objectForKey("tags") as? [String]
     }
 
-    
-        
+//    class func questionsFromJSON(jsonData : NSArray) -> [Question]{
+//        
+//        var questions = [Question]()
+//    
 //        for jsonQuestion : AnyObject in jsonData {
+//            var question = Question()
+//            question.questionViewCount = jsonQuestion.objectForKey("view_count") as? Int
+//            question.questionAnswerCount = jsonQuestion.objectForKey("answer_count") as? Int
+//            question.questionID = jsonQuestion.objectForKey("question_id") as? Int
+//            question.questionTitle = jsonQuestion.objectForKey("title") as? String
+//            question.questionScore = jsonQuestion.objectForKey("score") as? Int
+//            question.questionLink = jsonQuestion.objectForKey("link") as? NSURL
+//            question.questionLastActivityDate = jsonQuestion.objectForKey("last_activity_date") as? NSDate
+//            question.questionCreationDate = jsonQuestion.objectForKey("creation_date") as? NSDate
 //            
-//        }
-    
-//    func parseJsonData(data: NSData) {
-//        
-//        var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
-//        
-//        var items = json["items"] as? Array<NSDictionary>
-//        
-//        println(items!.count)
-//        
-//        for item in items {
-//            questionViewCount! = item["view_count"] as Int
+//            if let user = jsonQuestion["owner"] as? NSDictionary {
+//                var user_id = user["user_id"] as String
+//                var displayName = user["display_name"] as String
+//                var link = user["link"] as NSURL
+//                var profileImage = user["profile_image"] as UIImage
+//                
+//            }
 //            
+//            questions += question
 //        }
-//        
+//        return questions
 //    }
     
+
     
 }

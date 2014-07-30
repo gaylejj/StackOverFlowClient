@@ -10,22 +10,94 @@ import Foundation
 
 class NetworkController: NSObject {
 
+    let apiDomain = "http://api.stackexchange.com/2.2/"
+    let apiMidPoint = "search?order=desc&sort=activity"
+    let searchEndpoint = "&site=stackoverflow"
     
-    func downloadSearchResults() {
-        let url = NSURL(string: "http://api.stackexchange.com/2.2/search?pagesize=5&order=desc&sort=activity&tagged=swift&site=stackoverflow")
+    func parseResponse(responseData: NSData) -> [Question] {
+        var questions = [Question]()
+
+        if let responseDict = NSJSONSerialization.JSONObjectWithData(responseData, options: nil, error: nil) as? NSDictionary {
+            
+            if let items = responseDict["items"] as? NSArray {
+                for item in items {
+                    if let itemDict = item as? NSDictionary {
+                        let question = Question(itemDict: itemDict)
+                        questions += question
+                        println("Question's title is \(question.questionTitle)")
+                        println("Question's creation date is \(question.questionCreationDate)")
+                        println("Question's last activity date is \(question.questionLastActivityDate)")
+                    }
+                }
+            }
+        }
+    return questions
+    }
+    
+    func parseTags(tagsData: NSData) -> [Tags] {
+        var tags = [Tags]()
+        
+        if let tagsDict = NSJSONSerialization.JSONObjectWithData(tagsData, options: nil, error: nil) as? NSDictionary {
+            
+            if let items = tagsDict["items"] as? NSArray {
+                for item in items {
+                    if let itemDict = item as? NSDictionary {
+                        let tag = Tags(itemDict: itemDict)
+                        tags += tag
+                    }
+                }
+            }
+            
+        }
+        return tags
+    }
+    
+    func fetchQuestionsFromSampleData(callback : (questions : [Question]?, errorDescription : String?) -> Void) {
+        let sampleData = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("Example", ofType: "json"))
+        var questions = self.parseResponse(sampleData)
+        callback(questions: questions, errorDescription: nil)
+    }
+    
+    func downloadListOfTags(callback: (tags: [Tags]?, errorDescription: String?) -> Void) {
+        let url = NSURL(string: "http://api.stackexchange.com/2.2/tags?order=desc&sort=popular&site=stackoverflow")
         
         let request = NSURLRequest(URL: url)
         
-//        var request = NSMutableURLRequest(URL: NSURL(string: "http://api.stackexchange.com/docs/search#pagesize=5&order=desc&sort=activity&tagged=swift&filter=default&site=stackoverflow"))
+        let session = NSURLSession.sharedSession()
         
-//        request.HTTPMethod = "GET"
-        //        var url = NSURL(string: "http://api.stackexchange.com/docs/search")
+        let dataTask = session.dataTaskWithRequest(request, completionHandler: {(data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
+            
+            if error {
+                println("General Error")
+            } else {
+                if let httpResponse = response as? NSHTTPURLResponse {
+                    switch httpResponse.statusCode {
+                    case 200:
+                        println("Everything is ok")
+                        callback(tags: self.parseTags(data), errorDescription: nil)
+                    case 404:
+                        println("Not ok")
+                        callback(tags: nil, errorDescription: "404 Not found")
+                    case 400:
+                        println("Bad request")
+                    default:
+                        println("ooops")
+                    }
+                }
+            }
+            
+        })
+        dataTask.resume()
+    }
+    
+    func downloadSearchResults(searchTerm: String, callback : (questions : [Question]?, errorDescription : String?) -> Void) {
+        let url = NSURL(string: apiDomain + apiMidPoint + "&tagged=\(searchTerm)" + searchEndpoint)
         
-        //        let request = NSURLRequest(URL: url)
+        let request = NSURLRequest(URL: url)
+
         
         let session = NSURLSession.sharedSession()
-//        
-//        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+
     
         let dataTask = session.dataTaskWithRequest(request, completionHandler:
             {(data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
@@ -37,12 +109,12 @@ class NetworkController: NSObject {
                         switch httpResponse.statusCode {
                         case 200:
                             println("Everything is ok")
-                            var error : NSError?
-                            let jsonData = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &error) as NSDictionary
-                            var jsonQuestions = jsonData["items"] as NSArray
-                            var questions = Question.questionsFromJSON(jsonQuestions)
+                            callback(questions: self.parseResponse(data), errorDescription: nil)
                         case 404:
                             println("Not ok")
+                            callback(questions: nil, errorDescription: "404 Not found")
+                        case 400:
+                            println("Bad request")
                         default:
                             println("ooops")
                         }
