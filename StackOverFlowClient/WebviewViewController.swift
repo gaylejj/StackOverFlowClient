@@ -8,15 +8,23 @@
 
 import UIKit
 
-class WebviewViewController: UIViewController {
+class WebviewViewController: UIViewController, UIWebViewDelegate {
 
     @IBOutlet weak var webView: UIWebView!
     
     var question : Question?
     
+    let webviewQueue = NSOperationQueue()
+    
+    let activity = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem()
 
+        webView.delegate = self
+        
         // Do any additional setup after loading the view.
     }
     
@@ -24,7 +32,37 @@ class WebviewViewController: UIViewController {
         if question {
             let url = NSURL(string: question!.link)
             let request = NSURLRequest(URL: url)
-            webView.loadRequest(request)
+//            webView.loadRequest(request)
+            webviewLoadingTime(request)
+        }
+    }
+    
+//    func webViewDidStartLoad(webView: UIWebView!) {
+//
+//        activity.center = self.view.center
+//        activity.hidden = false
+//        activity.startAnimating()
+//        println(activity.center)
+//        self.view.addSubview(activity)
+//    }
+
+    func webViewDidFinishLoad(webView: UIWebView!) {
+        activity.stopAnimating()
+        activity.hidden = true
+    }
+    
+    func webviewLoadingTime(request: NSURLRequest) {
+        self.webView.loadRequest(request)
+
+        if !webView.loading {
+            self.view.addSubview(activity)
+
+            activity.center = self.view.center
+            activity.startAnimating()
+            println(activity.center)
+        } else {
+            activity.hidden = true
+            activity.stopAnimating()
         }
     }
 

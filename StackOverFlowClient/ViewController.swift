@@ -61,14 +61,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         
-        let webviewVC = self.storyboard.instantiateViewControllerWithIdentifier("webview") as WebviewViewController
+        let webviewNav = self.storyboard.instantiateViewControllerWithIdentifier("webviewNav") as UINavigationController
+        
+        let webviewVC = webviewNav.topViewController as WebviewViewController
         
         let singleQuestion = self.questions![indexPath.row] as Question
         
         webviewVC.question = singleQuestion
         
 //        self.navigationController.pushViewController(webviewVC, animated: true)
-        self.splitViewController.showDetailViewController(webviewVC, sender: self)
+        self.splitViewController.showDetailViewController(webviewNav, sender: self)
         
     }
     
