@@ -25,8 +25,8 @@ class NetworkController: NSObject {
                         let question = Question(itemDict: itemDict)
                         questions += question
                         println("Question's title is \(question.questionTitle)")
-                        println("Question's creation date is \(question.questionCreationDate)")
-                        println("Question's last activity date is \(question.questionLastActivityDate)")
+                        println("Question's link is \(question.link)")
+                        
                     }
                 }
             }
@@ -34,15 +34,15 @@ class NetworkController: NSObject {
     return questions
     }
     
-    func parseTags(tagsData: NSData) -> [Tags] {
-        var tags = [Tags]()
+    func parseTags(tagsData: NSData) -> [Tag] {
+        var tags = [Tag]()
         
         if let tagsDict = NSJSONSerialization.JSONObjectWithData(tagsData, options: nil, error: nil) as? NSDictionary {
             
             if let items = tagsDict["items"] as? NSArray {
                 for item in items {
                     if let itemDict = item as? NSDictionary {
-                        let tag = Tags(itemDict: itemDict)
+                        let tag = Tag(itemDict: itemDict)
                         tags += tag
                     }
                 }
@@ -58,7 +58,7 @@ class NetworkController: NSObject {
         callback(questions: questions, errorDescription: nil)
     }
     
-    func downloadListOfTags(callback: (tags: [Tags]?, errorDescription: String?) -> Void) {
+    func downloadListOfTags(callback: (tags: [Tag]?, errorDescription: String?) -> Void) {
         let url = NSURL(string: "http://api.stackexchange.com/2.2/tags?order=desc&sort=popular&site=stackoverflow")
         
         let request = NSURLRequest(URL: url)

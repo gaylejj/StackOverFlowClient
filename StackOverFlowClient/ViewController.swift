@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     var questions : [Question]?
-    var tags: [Tags]?
+    var tags: [Tag]?
     
     @IBOutlet weak var tableView : UITableView!
         
@@ -59,15 +59,29 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return 0
     }
     
+    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        
+        let webviewVC = self.storyboard.instantiateViewControllerWithIdentifier("webview") as WebviewViewController
+        
+        let singleQuestion = self.questions![indexPath.row] as Question
+        
+        webviewVC.question = singleQuestion
+        
+//        self.navigationController.pushViewController(webviewVC, animated: true)
+        self.splitViewController.showDetailViewController(webviewVC, sender: self)
+        
+    }
+    
+    func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+        return UITableViewAutomaticDimension;
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-    func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
-        return UITableViewAutomaticDimension;
-    }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar!) {
         let searchTerm = searchBar.text
@@ -95,14 +109,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let networkController = NetworkController()
         
         networkController.downloadListOfTags(
-            {(tags: [Tags]?, errorDescription: String?) -> Void in
+            {(tags: [Tag]?, errorDescription: String?) -> Void in
                 
                 tagsVC.tags = tags
                 
                 NSOperationQueue.mainQueue().addOperationWithBlock(
                     {() -> Void in
                         
-//                        tagsVC.tableView.reloadData()
                         self.navigationController.pushViewController(tagsVC, animated: true)
                         
                     })

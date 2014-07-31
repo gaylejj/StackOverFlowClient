@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Tags: NSObject {
+class Tag: NSObject {
     
     var name: String?
     var count: Int?

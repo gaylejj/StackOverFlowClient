@@ -18,6 +18,7 @@ class Question: NSObject {
     var questionTitle : String?
     var questionID : Int?
     var tags : [String]?
+    var link : String?
     
 //    var questions = [Question]()
     
@@ -33,6 +34,7 @@ class Question: NSObject {
             self.questionLastActivityDate = NSDate(timeIntervalSince1970: lastActivityDateEpoch)
         }
         self.tags = itemDict.objectForKey("tags") as? [String]
+        self.link = itemDict.objectForKey("link") as? String
     }
 
 //    class func questionsFromJSON(jsonData : NSArray) -> [Question]{

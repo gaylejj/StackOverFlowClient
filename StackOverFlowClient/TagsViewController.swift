@@ -10,7 +10,7 @@ import UIKit
 
 class TagsViewController: UIViewController, UITableViewDataSource {
     
-    var tags: [Tags]?
+    var tags: [Tag]?
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -36,6 +36,14 @@ class TagsViewController: UIViewController, UITableViewDataSource {
         let tag = tags![indexPath.row]
         
         cell.textLabel.text = tag.name
+        
+//        if tag.count? {
+//            cell.detailTextLabel.text = "\(tag.count)"
+//        } else {
+//            cell.detailTextLabel.text = "Count not available"
+//        }
+        
+        println(tag.count)
         
         return cell
         
