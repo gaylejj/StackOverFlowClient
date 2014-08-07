@@ -37,11 +37,11 @@ class TagsViewController: UIViewController, UITableViewDataSource {
         
         cell.textLabel.text = tag.name
         
-//        if tag.count? {
-//            cell.detailTextLabel.text = "\(tag.count)"
-//        } else {
-//            cell.detailTextLabel.text = "Count not available"
-//        }
+        if tag.count != nil {
+            cell.detailTextLabel.text = "\(tag.count!)"
+        } else {
+            cell.detailTextLabel.text = "Count not available"
+        }
         
         println(tag.count)
         
@@ -50,7 +50,7 @@ class TagsViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
-        if self.tags {
+        if self.tags != nil {
             return tags!.count
         }
         return 0

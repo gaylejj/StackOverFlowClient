@@ -13,10 +13,13 @@ class QuestionCell: UITableViewCell {
     
     @IBOutlet weak var textView: UITextView!
 
-    init(style: UITableViewCellStyle, reuseIdentifier: String) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        // Initialization code
-    }
+//    override init(style: UITableViewCellStyle, reuseIdentifier: String) {
+//        super.init(style: style, reuseIdentifier: reuseIdentifier)
+//    }
+    
+//    required init(coder aDecoder: NSCoder!) {
+//        super.init(coder: aDecoder)
+//    }
 
     override func awakeFromNib() {
         super.awakeFromNib()

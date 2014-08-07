@@ -23,7 +23,7 @@ class NetworkController: NSObject {
                 for item in items {
                     if let itemDict = item as? NSDictionary {
                         let question = Question(itemDict: itemDict)
-                        questions += question
+                        questions.append(question)
                         println("Question's title is \(question.questionTitle)")
                         println("Question's link is \(question.link)")
                         
@@ -43,7 +43,7 @@ class NetworkController: NSObject {
                 for item in items {
                     if let itemDict = item as? NSDictionary {
                         let tag = Tag(itemDict: itemDict)
-                        tags += tag
+                        tags.append(tag)
                     }
                 }
             }
