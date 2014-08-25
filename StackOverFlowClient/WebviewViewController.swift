@@ -30,7 +30,7 @@ class WebviewViewController: UIViewController, UIWebViewDelegate {
     
     override func viewDidAppear(animated: Bool) {
         if question != nil {
-            let url = NSURL(string: question!.link)
+            let url = NSURL(string: question!.link!)
             let request = NSURLRequest(URL: url)
 //            webView.loadRequest(request)
             webviewLoadingTime(request)

@@ -53,7 +53,7 @@ class NetworkController: NSObject {
     }
     
     func fetchQuestionsFromSampleData(callback : (questions : [Question]?, errorDescription : String?) -> Void) {
-        let sampleData = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("Example", ofType: "json"))
+        let sampleData = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("Example", ofType: "json")!)
         var questions = self.parseResponse(sampleData)
         callback(questions: questions, errorDescription: nil)
     }
@@ -67,7 +67,7 @@ class NetworkController: NSObject {
         
         let dataTask = session.dataTaskWithRequest(request, completionHandler: {(data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
             
-            if error {
+            if (error != nil) {
                 println("General Error")
             } else {
                 if let httpResponse = response as? NSHTTPURLResponse {
@@ -102,7 +102,7 @@ class NetworkController: NSObject {
         let dataTask = session.dataTaskWithRequest(request, completionHandler:
             {(data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
                 
-                if error {
+                if (error != nil) {
                     println("General error")
                 } else {
                     if let httpResponse = response as? NSHTTPURLResponse {
